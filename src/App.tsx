@@ -3,6 +3,7 @@ import React, { FC, useReducer, createContext } from 'react'
 import './style/tailwind.output.css'
 import Header from "./layouts/Header";
 import Footer from "./layouts/Footer";
+import List from "./components/List";
 
 type State = {
   dogs: string[]
@@ -28,7 +29,7 @@ const reducer = (state: State, action: Action) => {
   }
 }
 
-const DogContext = createContext({} as {
+export const DogContext = createContext({} as {
   state: State
   dispatch: React.Dispatch<Action>
 })
@@ -39,6 +40,9 @@ const App: FC = () => {
   return (
     <DogContext.Provider value={{ state, dispatch }}>
       <Header />
+      <div className="container py-4 md:py-8">
+        <List />
+      </div>
       <Footer />
     </DogContext.Provider>
   )
