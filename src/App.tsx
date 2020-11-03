@@ -5,6 +5,7 @@ import Header from "./layouts/Header";
 import Footer from "./layouts/Footer";
 import Search from "./components/Search";
 import List from "./components/List";
+import Loading from "./components/Loading";
 import { fetchDogs } from "./api";
 
 type State = {
@@ -19,7 +20,7 @@ type Action = {
 
 const initialState = {
   dogs: [],
-  loading: false
+  loading: true
 }
 
 const reducer = (state: State, action: Action) => {
@@ -57,7 +58,7 @@ const App: FC = () => {
       <Header />
       <div className="container py-8">
         <Search />
-        <List />
+        { state.loading ? <Loading /> : <List />}
       </div>
       <Footer />
     </DogContext.Provider>

@@ -7,7 +7,7 @@ const List: FC = () => {
   return (
     <ul className="grid sm:grid-cols-2 lg:grid-cols-4 gap-x-6 gap-y-4">
       {state.dogs.map((url) => (
-        <li>
+        <li key={url}>
           <img className="w-full" src={url} alt="" />
         </li>
       ))}
