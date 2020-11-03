@@ -6,11 +6,20 @@ import Footer from "./layouts/Footer";
 import Search from "./components/Search";
 import List from "./components/List";
 import Loading from "./components/Loading";
+import Paginate from "./components/Paginate";
 import { fetchDogs } from "./api";
+
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { faChevronRight, faChevronLeft } from '@fortawesome/free-solid-svg-icons'
+library.add(faChevronRight, faChevronLeft)
+
 
 type State = {
   dogs: string[]
   loading: boolean
+  page: number
+  perPage: number
+  totalPage: number
 }
 
 type Action = {
@@ -18,9 +27,12 @@ type Action = {
   payload: any
 }
 
-const initialState = {
+const initialState: State = {
   dogs: [],
-  loading: true
+  loading: true,
+  page: 1,
+  perPage: 12,
+  totalPage: 1
 }
 
 const reducer = (state: State, action: Action) => {
@@ -47,7 +59,8 @@ const App: FC = () => {
           type: 'FETCH_DOG',
           payload: {
             dogs: data,
-            loading: false
+            loading: false,
+            totalPage: Math.ceil(data.length / state.perPage)
           }
         })
       })
@@ -59,6 +72,7 @@ const App: FC = () => {
       <div className="container py-8">
         <Search />
         { state.loading ? <Loading /> : <List />}
+        <Paginate />
       </div>
       <Footer />
     </DogContext.Provider>

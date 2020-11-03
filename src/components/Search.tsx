@@ -4,7 +4,7 @@ import { DogContext } from '../App'
 import {fetchBreeds, fetchDogs} from "../api";
 
 const Search: FC = () => {
-  const { dispatch } = useContext(DogContext)
+  const { state, dispatch } = useContext(DogContext)
   const [breeds, setBreeds] = useState<string[]>([])
 
   useEffect(() => {
@@ -25,7 +25,9 @@ const Search: FC = () => {
           type: 'FETCH_DOG',
           payload: {
             dogs: data,
-            loading: false
+            loading: false,
+            page: 1,
+            totalPage: Math.ceil(data.length / state.perPage)
           }
         })
       })

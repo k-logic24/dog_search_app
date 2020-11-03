@@ -1,3 +1,6 @@
 @tailwind base;
 @tailwind components;
+.paginate-btn {
+	@apply bg-gray-800 flex justify-center items-center text-white rounded-full;
+}
 @tailwind utilities;
