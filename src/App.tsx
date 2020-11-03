@@ -1,9 +1,10 @@
-import React, { FC, useReducer, createContext } from 'react'
+import React, { FC, useReducer, createContext, useEffect } from 'react'
 
 import './style/tailwind.output.css'
 import Header from "./layouts/Header";
 import Footer from "./layouts/Footer";
 import List from "./components/List";
+import { fetchDogs } from "./api";
 
 type State = {
   dogs: string[]
@@ -36,6 +37,19 @@ export const DogContext = createContext({} as {
 
 const App: FC = () => {
   const [state, dispatch] = useReducer(reducer, initialState)
+
+  useEffect(() => {
+    fetchDogs('/breeds/image/random/50')
+      .then((data) => {
+        dispatch({
+          type: 'FETCH_DOG',
+          payload: {
+            dogs: data,
+            loading: false
+          }
+        })
+      })
+  }, [])
 
   return (
     <DogContext.Provider value={{ state, dispatch }}>
