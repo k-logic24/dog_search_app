@@ -71,8 +71,14 @@ const App: FC = () => {
       <Header />
       <div className="container py-8">
         <Search />
-        { state.loading ? <Loading /> : <List />}
-        <Paginate />
+        { state.loading
+          ? <Loading />
+          : (
+            <>
+              <List />
+              <Paginate />
+              </>
+          )}
       </div>
       <Footer />
     </DogContext.Provider>

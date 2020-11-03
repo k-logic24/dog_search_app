@@ -21,7 +21,7 @@ export const fetchBreeds = (url: string) => {
       .get(`${baseUrl}${url}`)
       .then((res) => {
         const data = res.data.message
-        for (const [breed, _] of Object.entries(data)) {
+        for (const [breed] of Object.entries(data)) {
           dataOfBreeds.push(breed)
         }
         resolve(dataOfBreeds)

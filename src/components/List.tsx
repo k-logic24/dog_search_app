@@ -11,15 +11,16 @@ const List: FC = () => {
       state.page * state.perPage
     )
     setPerData(filterData)
-  }, [ state.page ])
+  }, [state.page])
 
   return (
     <ul className="grid sm:grid-cols-2 lg:grid-cols-4 gap-x-6 gap-y-4">
-      {perData.map((url) => (
-        <li key={url}>
-          <img className="w-full" src={url} alt="" />
-        </li>
-      ))}
+      {perData &&
+        perData.map((url) => (
+          <li key={url}>
+            <img className="w-full" src={url} alt="" />
+          </li>
+        ))}
     </ul>
   )
 }
