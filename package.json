@@ -22,12 +22,12 @@
   },
   "scripts": {
     "format": "prettier --write ./src/**/*.{tsx,ts}",
-    "tailwind:w": "postcss ./src/style/tailwind.css -o ./src/style/tailwind.output.css -w",
-    "tailwind": "postcss ./src/style/tailwind.css -o ./src/style/tailwind.output.css",
+    "tailwind:watch": "postcss ./src/style/tailwind.css -o ./src/style/tailwind.output.css -w",
+    "tailwind:build": "postcss ./src/style/tailwind.css -o ./src/style/tailwind.output.css",
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "dev": "npm-run-all -p tailwind:w start",
-    "prod": "npm-run-all -s tailwind build"
+    "dev": "npm-run-all -p tailwind:watch start",
+    "prod": "NODE_ENV=production npm-run-all -s tailwind:build build"
   },
   "eslintConfig": {
     "extends": [

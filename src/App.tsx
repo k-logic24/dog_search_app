@@ -1,6 +1,5 @@
 import React, { FC, useReducer, createContext, useEffect } from 'react'
 
-import './style/tailwind.output.css'
 import Header from "./layouts/Header";
 import Footer from "./layouts/Footer";
 import Search from "./components/Search";
@@ -8,6 +7,8 @@ import List from "./components/List";
 import Loading from "./components/Loading";
 import Paginate from "./components/Paginate";
 import { fetchDogs } from "./api";
+
+import './style/tailwind.output.css'
 
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { faChevronRight, faChevronLeft } from '@fortawesome/free-solid-svg-icons'
