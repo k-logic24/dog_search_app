@@ -3,6 +3,7 @@ import React, { FC, useReducer, createContext, useEffect } from 'react'
 import './style/tailwind.output.css'
 import Header from "./layouts/Header";
 import Footer from "./layouts/Footer";
+import Search from "./components/Search";
 import List from "./components/List";
 import { fetchDogs } from "./api";
 
@@ -54,7 +55,8 @@ const App: FC = () => {
   return (
     <DogContext.Provider value={{ state, dispatch }}>
       <Header />
-      <div className="container py-4 md:py-8">
+      <div className="container py-8">
+        <Search />
         <List />
       </div>
       <Footer />
