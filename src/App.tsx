@@ -8,8 +8,6 @@ import Loading from "./components/Loading";
 import Paginate from "./components/Paginate";
 import { fetchDogs } from "./api";
 
-import './style/tailwind.output.css'
-
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { faChevronRight, faChevronLeft } from '@fortawesome/free-solid-svg-icons'
 library.add(faChevronRight, faChevronLeft)
@@ -24,7 +22,7 @@ type State = {
 
 type Action = {
   type: 'FETCH_DOG'
-  payload: any
+  payload: Partial<typeof initialState>
 }
 
 const initialState: State = {
