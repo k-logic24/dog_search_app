@@ -1,4 +1,4 @@
-import React, {createContext} from "react";
+import React, { createContext } from 'react'
 
 type State = {
   dogs: string[]
@@ -30,7 +30,9 @@ export const reducer = (state: State, action: Action) => {
   }
 }
 
-export const DogContext = createContext({} as {
-  state: State
-  dispatch: React.Dispatch<Action>
-})
+export const DogContext = createContext(
+  {} as {
+    state: State
+    dispatch: React.Dispatch<Action>
+  }
+)

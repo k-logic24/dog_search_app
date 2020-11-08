@@ -1,24 +1,27 @@
 import React, { FC, useContext, useState, useEffect } from 'react'
 
+import { InteractionApi } from '../api'
 import { DogContext } from '../store'
-import { fetchBreeds, fetchDogs } from '../api'
 
 const Search: FC = () => {
   const { state, dispatch } = useContext(DogContext)
   const [breeds, setBreeds] = useState<string[]>([])
 
   useEffect(() => {
-    fetchBreeds('/breeds/list/all').then((data) => setBreeds(data))
+    new InteractionApi('/breeds/list/all')
+      .fetchDogBreeds()
+      .then((breeds) => setBreeds(breeds))
   }, [])
 
   const handleChangeBreed = async (event: React.ChangeEvent) => {
+    await dispatch({ type: 'FETCH_DOG', payload: { loading: true } })
+
     const selectedValue =
       event.target instanceof HTMLSelectElement && event.target.value
     const url = selectedValue
       ? `/breed/${selectedValue}/images/random/50`
       : `/breeds/image/random/50`
-    await dispatch({ type: 'FETCH_DOG', payload: { loading: true } })
-    fetchDogs(url).then((data) => {
+    new InteractionApi(url).fetchDogData().then((data) => {
       dispatch({
         type: 'FETCH_DOG',
         payload: {

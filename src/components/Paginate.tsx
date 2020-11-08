@@ -1,7 +1,7 @@
 import React, { FC } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
-import { usePagination } from "../hooks/usePagination";
+import { usePagination } from '../hooks/usePagination'
 
 const Paginate: FC = () => {
   const [page, totalPage, paginateAction] = usePagination()

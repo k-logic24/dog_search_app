@@ -14,15 +14,11 @@ export const usePagination = () => {
 
   const handleClickPagenate: PaginateAction = async (event, type) => {
     event.preventDefault()
-    await dispatch({ type: 'FETCH_DOG', payload: { loading: true } })
     dispatch({
       type: 'FETCH_DOG',
-      payload: {
-        page: type === 'prev' ? prevPage : nextPage,
-        loading: false
-      }
+      payload: { page: type === 'prev' ? prevPage : nextPage }
     })
   }
 
-  return [ state.page, state.totalPage, handleClickPagenate ] as const
+  return [state.page, state.totalPage, handleClickPagenate] as const
 }
