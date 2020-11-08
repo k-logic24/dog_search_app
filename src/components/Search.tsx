@@ -1,6 +1,6 @@
 import React, { FC, useContext, useState, useEffect } from 'react'
 
-import { DogContext } from '../App'
+import { DogContext } from '../store'
 import { fetchBreeds, fetchDogs } from '../api'
 
 const Search: FC = () => {

@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState, FC } from 'react'
-import { DogContext } from '../App'
+import { DogContext } from '../store'
 
 const List: FC = () => {
   const { state } = useContext(DogContext)

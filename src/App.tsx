@@ -1,4 +1,4 @@
-import React, { FC, useReducer, createContext, useEffect } from 'react'
+import React, { FC, useReducer, useEffect } from 'react'
 
 import Header from "./layouts/Header";
 import Footer from "./layouts/Footer";
@@ -7,45 +7,12 @@ import List from "./components/List";
 import Loading from "./components/Loading";
 import Paginate from "./components/Paginate";
 import { fetchDogs } from "./api";
+import { reducer, DogContext, initialState } from "./store";
 
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { faChevronRight, faChevronLeft } from '@fortawesome/free-solid-svg-icons'
 library.add(faChevronRight, faChevronLeft)
 
-type State = {
-  dogs: string[]
-  loading: boolean
-  page: number
-  perPage: number
-  totalPage: number
-}
-
-type Action = {
-  type: 'FETCH_DOG'
-  payload: Partial<typeof initialState>
-}
-
-const initialState: State = {
-  dogs: [],
-  loading: true,
-  page: 1,
-  perPage: 12,
-  totalPage: 1
-}
-
-const reducer = (state: State, action: Action) => {
-  switch (action.type) {
-    case 'FETCH_DOG':
-      return { ...state, ...action.payload }
-    default:
-      return state
-  }
-}
-
-export const DogContext = createContext({} as {
-  state: State
-  dispatch: React.Dispatch<Action>
-})
 
 const App: FC = () => {
   const [state, dispatch] = useReducer(reducer, initialState)

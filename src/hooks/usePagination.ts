@@ -1,6 +1,6 @@
 import React, { useContext } from 'react'
 
-import { DogContext } from '../App'
+import { DogContext } from '../store'
 
 type PaginateAction = (
   event: React.MouseEvent<HTMLButtonElement>,
