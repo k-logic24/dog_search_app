@@ -11,7 +11,7 @@ const Search: FC = () => {
     new InteractionApi('/breeds/list/all')
       .fetchDogBreeds()
       .then((breeds) => setBreeds(breeds))
-  }, [])
+  }, [setBreeds])
 
   const handleChangeBreed = async (event: React.ChangeEvent) => {
     await dispatch({ type: 'FETCH_DOG', payload: { loading: true } })
