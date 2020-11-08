@@ -9,10 +9,6 @@ import Paginate from "./components/Paginate";
 import { InteractionApi } from "./api";
 import { reducer, DogContext, initialState } from "./store";
 
-import { library } from '@fortawesome/fontawesome-svg-core'
-import { faChevronRight, faChevronLeft } from '@fortawesome/free-solid-svg-icons'
-library.add(faChevronRight, faChevronLeft)
-
 const App: FC = () => {
   const [state, dispatch] = useReducer(reducer, initialState)
 

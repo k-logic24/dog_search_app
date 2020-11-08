@@ -1,5 +1,3 @@
-import axios from 'axios'
-
 const baseUrl = 'https://dog.ceo/api'
 export class InteractionApi {
   private variableUrl
@@ -8,21 +6,20 @@ export class InteractionApi {
   }
 
   fetchDogData() {
-    return axios
-      .get(`${baseUrl + this.variableUrl}`)
-      .then((res) => res.data.message)
+    return fetch(`${baseUrl + this.variableUrl}`)
+      .then((res) => res.json())
+      .then((data) => data.message)
       .catch((err) => {
         throw new Error(err)
       })
   }
 
   fetchDogBreeds() {
-    return axios
-      .get(`${baseUrl + this.variableUrl}`)
-      .then((res) => {
+    return fetch(`${baseUrl + this.variableUrl}`)
+      .then((res) => res.json())
+      .then((data) => {
         let dataOfBreeds: string[] = []
-        const data = res.data.message
-        for (const [breed] of Object.entries(data)) {
+        for (const [breed] of Object.entries(data.message)) {
           dataOfBreeds.push(breed)
         }
         return dataOfBreeds
